@@ -1,0 +1,12 @@
+{
+    "name": "resource_unit",
+    "type": "string",
+    "format": "default",
+    "constraints": {
+        "enum": [
+            "energy",
+            "energy_per_area",
+            "energy_per_cap"
+        ]
+    }
+}

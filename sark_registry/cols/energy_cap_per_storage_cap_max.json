@@ -1,0 +1,8 @@
+{
+    "name": "energy_cap_per_storage_cap_max",
+    "type": "number",
+    "format": "default",
+    "constraints": {
+        "minimum": 0
+    }
+}

@@ -1,0 +1,5 @@
+{
+    "name": "cost_storage_cap",
+    "type": "number",
+    "format": "default"
+}

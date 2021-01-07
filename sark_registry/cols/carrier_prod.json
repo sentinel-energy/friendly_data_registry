@@ -1,0 +1,8 @@
+{
+    "name": "carrier_prod",
+    "type": "number",
+    "format": "default",
+    "constraints": {
+        "minimum": 0
+    }
+}

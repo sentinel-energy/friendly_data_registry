@@ -1,0 +1,9 @@
+{
+    "name": "capacity_factor",
+    "type": "number",
+    "format": "default",
+    "constraints": {
+        "minimum": 0,
+        "maximum": 1
+    }
+}

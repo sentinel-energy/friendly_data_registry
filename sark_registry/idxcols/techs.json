@@ -1,0 +1,8 @@
+{
+    "name": "techs",
+    "type": "string",
+    "format": "default",
+    "constraints": {
+	"enum": []
+    }
+}

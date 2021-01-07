@@ -1,0 +1,13 @@
+{
+    "name": "coordinates",
+    "type": "string",
+    "format": "default",
+    "constraints": {
+        "enum": [
+            "lat",
+            "lon",
+            "x",
+            "y"
+        ]
+    }
+}

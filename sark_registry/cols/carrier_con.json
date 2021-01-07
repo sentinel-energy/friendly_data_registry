@@ -1,0 +1,8 @@
+{
+    "name": "carrier_con",
+    "type": "number",
+    "format": "default",
+    "constraints": {
+        "maximum": 0
+    }
+}

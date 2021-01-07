@@ -1,0 +1,5 @@
+{
+    "name": "cost_energy_cap",
+    "type": "number",
+    "format": "default"
+}

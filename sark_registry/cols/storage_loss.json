@@ -1,0 +1,9 @@
+{
+    "name": "storage_loss",
+    "type": "number",
+    "format": "default",
+    "constraints": {
+        "minimum": 0,
+        "maximum": 1
+    }
+}

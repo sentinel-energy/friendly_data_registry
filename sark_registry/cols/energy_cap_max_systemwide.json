@@ -1,0 +1,8 @@
+{
+    "name": "energy_cap_max_systemwide",
+    "type": "number",
+    "format": "default",
+    "constraints": {
+        "minimum": 0
+    }
+}

@@ -1,0 +1,5 @@
+{
+    "name": "cost_depreciation_rate",
+    "type": "number",
+    "format": "default"
+}
