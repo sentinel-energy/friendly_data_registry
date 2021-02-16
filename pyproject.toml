@@ -1,0 +1,50 @@
+[project]
+name = "SENTINEL-archive-registry"
+version = "0.1.dev0"
+description = "Registry for SENTINEL archive."
+repository = "https://github.com/sentinel-energy/sentinel-archive-registry"
+keywords = ["SENTINEL", "archive", "registry"]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only"
+]
+
+[dependencies]
+
+[dev-dependencies]
+
+[build-system]
+requires = ["setuptools>=42", "setuptools_scm[toml]>=3.4" ]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+# used for pytest>=6.0, see: https://github.com/pytest-dev/pytest/pull/7247
+addopts = "-ra -q"
+
+[tool.black]
+# line-length = 79
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.github
+  | \.mypy_cache
+  | \.pytest_cache
+  | \.vscode
+  | _build
+  | build
+  | dist
+  | .*\.egg-info
+
+  # directories without python source files
+  | testing/data
+  | tmp
+  | htmlcov
+  | dsts
+)/
+'''

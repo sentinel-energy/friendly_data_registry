@@ -25,6 +25,46 @@ def read_file(fpath: _path_t) -> Union[Dict, List]:
     return reader(fpath.read_text())
 
 
+# FIXME: can't use Literal until we drop 3.7
+def get(col: str, col_t: str) -> Dict:
+    """Retrieve the column schema from column schema registry: `sark_registry`
+
+    Parameters
+    ----------
+    col : str
+        Column name to look for
+
+    col_t : Literal["cols", "idxcols"]
+        A literal string specifying the kind of column; one of: "cols", or "idxcols"
+
+    Returns
+    -------
+    Dict
+        Column schema; an empty dictionary is returned in case there are no matches
+
+    Raises
+    ------
+    RuntimeError
+        When more than one matches are found
+    ValueError
+        When the schema file in the registry is unsupported; not one of: JSON, or YAML
+
+    """
+    if col_t not in ("cols", "idxcols"):
+        raise ValueError(f"{col_t}: unknown column type")
+
+    curdir = Path(resource_filename("sark_registry", col_t))
+    schema = list(
+        chain.from_iterable(curdir.glob(f"{col}.{fmt}") for fmt in ("json", "yaml"))
+    )
+    if len(schema) == 0:
+        warn(f"{col}: not in registry", RuntimeWarning)
+        return {}  # no match, unregistered column
+    if len(schema) > 1:  # pragma: no cover, bad registry
+        raise RuntimeError(f"{schema}: multiple matches, duplicates in registry")
+    return cast(Dict, read_file(curdir / schema[0]))
+
+
 def help() -> str:
     """Generate documentation for all columns in the registry"""
     # definition list entry
