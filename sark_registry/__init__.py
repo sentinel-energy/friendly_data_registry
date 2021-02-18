@@ -1,8 +1,6 @@
 from itertools import chain
 import json
 from pathlib import Path
-from string import Template
-from textwrap import dedent
 from typing import cast, Dict, List, Union
 from warnings import warn
 
@@ -65,41 +63,31 @@ def get(col: str, col_t: str) -> Dict:
     return cast(Dict, read_file(curdir / schema[0]))
 
 
-def help() -> str:
-    """Generate documentation for all columns in the registry"""
-    # definition list entry
-    entry = Template(
-        dedent(
-            """
-    **$name ($type)**
-        constraints: $constraints
-    """
-        )
-    )
+def getall() -> Dict[str, List[Dict]]:
+    """Get all columns from registry, primarily to generate documentation
 
-    col_types = {
-        "cols": "Value columns - ``cols``",
-        "idxcols": "Index columns - ``idxcols``",
-    }
-    contents = []
-    for col_t, desc in col_types.items():
-        contents += [desc, "-" * len(desc)]  # section heading
-        curdir = Path(resource_filename("sark_registry", col_t))
-        schemas: List[Dict] = [
+    Returns
+    -------
+    Dict[str, Dict]
+        The returned value is separated by column type::
+
+          {
+            "idxcols": [
+              {..}  # column schemas
+            ],
+            "cols": [
+              {..}  # column schemas
+            ],
+          }
+
+    """
+    return {
+        col_t: [
             read_file(f)
             for f in chain.from_iterable(
-                curdir.glob(f"*.{fmt}") for fmt in ("json", "yaml")
+                Path(resource_filename("sark_registry", col_t)).glob(f"*.{fmt}")
+                for fmt in ("json", "yaml")
             )
         ]
-        contents += [
-            "".join(
-                [
-                    # substitute and clean up unsubstituted keys
-                    entry.safe_substitute(**schema).replace(
-                        "constraints: $constraints", ""
-                    )
-                    for schema in schemas
-                ]
-            )
-        ]
-    return "\n".join(contents)
+        for col_t in ("cols", "idxcols")
+    }
