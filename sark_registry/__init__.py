@@ -63,7 +63,7 @@ def get(col: str, col_t: str) -> Dict:
     return cast(Dict, read_file(curdir / schema[0]))
 
 
-def getall() -> Dict[str, List[Dict]]:
+def getall(with_file: bool = False) -> Dict[str, List[Dict]]:
     """Get all columns from registry, primarily to generate documentation
 
     Returns
@@ -81,13 +81,16 @@ def getall() -> Dict[str, List[Dict]]:
           }
 
     """
-    return {
-        col_t: [
-            read_file(f)
-            for f in chain.from_iterable(
-                Path(resource_filename("sark_registry", col_t)).glob(f"*.{fmt}")
-                for fmt in ("json", "yaml")
-            )
-        ]
-        for col_t in ("cols", "idxcols")
-    }
+    res = {}
+    for col_t in ("cols", "idxcols"):
+        col_t_dir = Path(resource_filename("sark_registry", col_t))
+        cols = []
+        for f in chain.from_iterable(
+            col_t_dir.glob(f"*.{fmt}") for fmt in ("json", "yaml")
+        ):
+            if with_file:
+                cols += [(read_file(f), f"{f.relative_to(col_t_dir.parent)}")]
+            else:
+                cols += [read_file(f)]
+        res[col_t] = cols
+    return res
