@@ -25,7 +25,7 @@ def read_file(fpath: _path_t) -> Union[Dict, List]:
 
 # FIXME: can't use Literal until we drop 3.7
 def get(col: str, col_t: str) -> Dict:
-    """Retrieve the column schema from column schema registry: `sark_registry`
+    """Retrieve the column schema from column schema registry: `friendly_data_registry`
 
     Parameters
     ----------
@@ -51,7 +51,7 @@ def get(col: str, col_t: str) -> Dict:
     if col_t not in ("cols", "idxcols"):
         raise ValueError(f"{col_t}: unknown column type")
 
-    curdir = Path(resource_filename("sark_registry", col_t))
+    curdir = Path(resource_filename("friendly_data_registry", col_t))
     schema = list(
         chain.from_iterable(curdir.glob(f"{col}.{fmt}") for fmt in ("json", "yaml"))
     )
@@ -83,7 +83,7 @@ def getall(with_file: bool = False) -> Dict[str, List[Dict]]:
     """
     res = {}
     for col_t in ("cols", "idxcols"):
-        col_t_dir = Path(resource_filename("sark_registry", col_t))
+        col_t_dir = Path(resource_filename("friendly_data_registry", col_t))
         cols = []
         for f in chain.from_iterable(
             col_t_dir.glob(f"*.{fmt}") for fmt in ("json", "yaml")

@@ -1,11 +1,12 @@
 [project]
-name = "SENTINEL-archive-registry"
+name = "friendly_data_registry"
 version = "0.1.dev0"
-description = "Registry for SENTINEL archive."
-repository = "https://github.com/sentinel-energy/sentinel-archive-registry"
-keywords = ["SENTINEL", "archive", "registry"]
+description = "Registry for Frictionless Energy Data."
+maintainers = "The SENTINEL collaboration"
+repository = "https://github.com/sentinel-energy/friendly_data_registry"
+keywords = ["SENTINEL", "energy", "data", "frictionless", "registry"]
 classifiers = [
-    "Development Status :: 2 - Pre-Alpha",
+    "Development Status :: 3 - Alpha",
     "Intended Audience :: Science/Research",
     "Topic :: Scientific/Engineering",
     "Programming Language :: Python",

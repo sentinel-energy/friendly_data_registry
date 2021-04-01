@@ -1,15 +1,15 @@
-"""SENTINEL archive registry
+"""Frictionless Energy Data Registry
 
 """
 
 from setuptools import setup, find_packages
 
 setup(
-    name="SENTINEL-archive-registry",
+    name="friendly_data_registry",
     version="0.1.dev0",
-    url="https://github.com/sentinel-energy/sentinel-achive-registry",
+    url="https://github.com/sentinel-energy/friendly_data_registry",
     packages=find_packages(exclude=["tests"]),
     install_requires=["pyyaml"],
-    package_data={"sark_registry": ["cols/*.json", "idxcols/*.json"]},
+    package_data={"friendly_data_registry": ["cols/*.json", "idxcols/*.json"]},
     include_package_data=True,
 )
