@@ -1,6 +1,6 @@
 [project]
 name = "friendly_data_registry"
-version = "0.1.dev0"
+version = "20210401"
 description = "Registry for Frictionless Energy Data."
 maintainers = "The SENTINEL collaboration"
 repository = "https://github.com/sentinel-energy/friendly_data_registry"
