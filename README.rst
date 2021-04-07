@@ -1,4 +1,5 @@
-``friendly_data`` registry
-==========================
+Registry for Frictionless Energy data (Friendly data)
+=====================================================
 
-Dataset registry for the Frictionless Energy Data implementation used by the SENTINEL collaboration.
+This is the schema registry for the Frictionless Energy data
+implementation developed by the SENTINEL collaboration.
