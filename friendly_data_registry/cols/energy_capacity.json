@@ -1,5 +1,5 @@
 {
-    "name": "energy_cap",
+    "name": "energy_capacity",
     "type": "number",
     "format": "default",
     "constraints": {

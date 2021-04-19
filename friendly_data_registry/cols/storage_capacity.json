@@ -1,5 +1,5 @@
 {
-    "name": "storage_cap",
+    "name": "storage_capacity",
     "type": "number",
     "format": "default",
     "constraints": {
