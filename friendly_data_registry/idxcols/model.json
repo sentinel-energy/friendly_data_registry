@@ -1,0 +1,9 @@
+{
+    "name": "model",
+    "type": "string",
+    "format": "default",
+    "constraints": {
+	"enum": []
+    },
+    "description": "The model that generated this data.  This index column is primarily to support IAMC time-series."
+}

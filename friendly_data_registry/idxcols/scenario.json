@@ -1,0 +1,9 @@
+{
+    "name": "scenario",
+    "type": "string",
+    "format": "default",
+    "constraints": {
+	"enum": []
+    },
+    "description": "The scenario under which this data was generated.  This index column is primarily to IAMC time-series."
+}

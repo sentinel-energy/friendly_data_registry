@@ -1,0 +1,7 @@
+name: unit
+type: string
+constraints:
+  enum: []
+description: >-
+  This column is used to fill in the "unit" column when converting a
+  data package to the IAMC format.

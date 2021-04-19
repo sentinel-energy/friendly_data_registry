@@ -1,0 +1,10 @@
+name: variable
+type: string
+format: default
+constraints:
+  pattern: "^[0-9a-zA-Z_ |-]+$"
+title: An IAMC variable
+description: >-
+  Denote the semi-hierarchical variable that the data represents.  It
+  is in the format ``Category|Subcategory|Specification``; for more,
+  see: https://pyam-iamc.readthedocs.io/en/stable/data.html

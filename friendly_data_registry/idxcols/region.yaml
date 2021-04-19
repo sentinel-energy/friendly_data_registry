@@ -1,0 +1,7 @@
+name: unit
+type: string
+constraints:
+  enum: []
+description: >-
+  The region the data corresponds to.  This index column is needed
+  when converting a data package to the IAMC format.
