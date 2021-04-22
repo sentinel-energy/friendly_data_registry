@@ -1,0 +1,6 @@
+{
+    "name": "value",
+    "type": "number",
+    "format": "default",
+    "description": "This column is primarily to support long-form IAMC time-series."
+}

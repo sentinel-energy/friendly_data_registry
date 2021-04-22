@@ -1,0 +1,6 @@
+{
+    "name": "year",
+    "type": "year",
+    "title": "Data year",
+    "description": "This index column is primarily to support long-form IAMC time-series."
+}
