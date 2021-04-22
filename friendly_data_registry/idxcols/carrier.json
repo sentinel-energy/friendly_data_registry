@@ -1,5 +1,5 @@
 {
-    "name": "carriers",
+    "name": "carrier",
     "type": "string",
     "format": "default",
     "constraints": {
