@@ -80,14 +80,24 @@ def getall(with_file: bool = False) -> Dict[str, List[Dict]]:
             ],
           }
 
+    Raises
+    ------
+    RuntimeError
+        When more than one matches are found
+
     """
     res = {}
     for col_t in ("cols", "idxcols"):
         col_t_dir = Path(resource_filename("friendly_data_registry", col_t))
         cols = []
+        schema_files = set()
         for f in chain.from_iterable(
             col_t_dir.glob(f"*.{fmt}") for fmt in ("json", "yaml")
         ):
+            if f.stem in schema_files:
+                raise RuntimeError(f"{f}: duplicate schema in registry")
+            else:
+                schema_files.add(f.stem)
             if with_file:
                 cols += [(read_file(f), f"{f.relative_to(col_t_dir.parent)}")]
             else:
