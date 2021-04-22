@@ -1,46 +1,48 @@
-from contextlib import nullcontext as does_not_raise
 from itertools import chain
 from pathlib import Path
 
-from pkg_resources import resource_filename
-
+from glom import glom, Match, Optional as optmatch, Or
+from glom import MatchError, TypeMatchError
 import pytest
 
 import friendly_data_registry as registry
 
 
+class schschemaema:
+    _schema = {
+        "name": str,
+        "type": str,
+        optmatch("format"): str,
+        optmatch("constraints"): {
+            optmatch("enum"): list,
+            optmatch("maximum"): Or(int, float),
+            optmatch("minimum"): Or(int, float),
+            optmatch("pattern"): str,
+        },
+        optmatch("title"): str,
+        optmatch("description"): str,
+        optmatch("alias"): [{"name": str, "description": str}],
+    }
+
+    def __init__(self, schema: dict):
+        glom(schema, Match(self._schema))
+
+
 @pytest.mark.parametrize(
-    "col, col_t, expectation",
-    [
-        ("locs", "idxcols", does_not_raise()),
-        ("storage", "cols", does_not_raise()),
-        (
-            "notinreg",
-            "cols",
-            pytest.warns(RuntimeWarning, match="notinreg: not in registry"),
-        ),
-        (
-            "timesteps",
-            "bad_col_t",
-            pytest.raises(ValueError, match="bad_col_t: unknown column type"),
-        ),
-    ],
+    "schema, _file", chain.from_iterable(registry.getall(with_file=True).values())
 )
-def test_registry(col, col_t, expectation):
-    with expectation:
-        res = registry.get(col, col_t)
-        assert isinstance(res, dict)
-        if col == "notinreg":
-            assert res == {}
-
-
-def test_getall():
-    res = registry.getall()
-    expected = ["cols", "idxcols"]
-    assert sorted(res) == expected
-    for col_t in expected:
-        curdir = Path(resource_filename("friendly_data_registry", col_t))
-        schemas = list(
-            chain.from_iterable(curdir.glob(f"*.{fmt}") for fmt in ("json", "yaml"))
-        )
-        assert len(res[col_t]) == len(schemas)
+def test_match_registry_schema(schema, _file):
+    _file = Path(_file)
+    try:
+        schschemaema(schema)
+    except TypeMatchError as err:
+        e, f = err.args[1:]
+        print(f"{_file}: type mismatch in value, expected {e}, found {f}")
+        raise
+    except MatchError as err:
+        print(f"{_file}: {err.args[1]}: bad key in schema")
+        raise
+    else:
+        assert (
+            _file.stem == schema["name"]
+        ), f"{_file}: schema names do not match: `{schema['name']}`"
