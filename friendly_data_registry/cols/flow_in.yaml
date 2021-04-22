@@ -1,4 +1,4 @@
 name: flow_in
 type: number
 constraints:
-  maximum: 0
+  minimum: 0
