@@ -4,5 +4,6 @@
     "format": "default",
     "constraints": {
 	"enum": []
-    }
+    },
+    "description": "An energy carrier or commodity that can be produced, consumed, stored, and transported. This could be \"electricity\", \"heat\", or something more tangible such as \"woody_biomass\", or more abstract such as \"person_kilometers\" when modelling transportation."
 }
