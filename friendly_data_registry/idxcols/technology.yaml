@@ -1,0 +1,9 @@
+name: technology
+type: string
+constraints:
+  enum: []
+description: >-
+  Descriptor or name of the technology.
+alias:
+  - name: tech
+    description: Calliope

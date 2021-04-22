@@ -1,0 +1,10 @@
+name: nameplate_capacity
+type: number
+format: default
+constraints:
+  minimum: 0
+description: >-
+  The nameplate capacity of a technology, for example, the power generation capacity of a power plant in MW.
+alias:
+  - name: energy_cap
+    description: Calliope

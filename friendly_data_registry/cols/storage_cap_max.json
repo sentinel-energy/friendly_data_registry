@@ -1,8 +1,0 @@
-{
-    "name": "storage_cap_max",
-    "type": "number",
-    "format": "default",
-    "constraints": {
-        "minimum": 0
-    }
-}

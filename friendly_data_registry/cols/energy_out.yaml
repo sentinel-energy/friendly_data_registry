@@ -1,4 +1,0 @@
-name: energy_out
-type: number
-constraints:
-  minimum: 0

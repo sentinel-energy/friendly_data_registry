@@ -1,8 +1,0 @@
-{
-    "name": "resource_cap",
-    "type": "number",
-    "format": "default",
-    "constraints": {
-        "minimum": 0
-    }
-}

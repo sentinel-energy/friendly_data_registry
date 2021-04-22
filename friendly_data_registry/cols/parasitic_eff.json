@@ -1,9 +1,0 @@
-{
-    "name": "parasitic_eff",
-    "type": "number",
-    "format": "default",
-    "constraints": {
-        "minimum": 0,
-        "maximum": 1
-    }
-}

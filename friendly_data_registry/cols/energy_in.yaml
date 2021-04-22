@@ -1,4 +1,0 @@
-name: energy_in
-type: number
-constraints:
-  maximum: 0

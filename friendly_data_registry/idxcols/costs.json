@@ -1,8 +1,0 @@
-{
-    "name": "costs",
-    "type": "string",
-    "format": "default",
-    "constraints": {
-	"enum": []
-    }
-}

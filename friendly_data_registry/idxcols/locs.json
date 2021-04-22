@@ -1,8 +1,0 @@
-{
-    "name": "locs",
-    "type": "string",
-    "format": "default",
-    "constraints": {
-	"enum": []
-    }
-}

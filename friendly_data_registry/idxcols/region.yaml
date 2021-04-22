@@ -1,7 +1,12 @@
-name: unit
+name: region
 type: string
 constraints:
   enum: []
 description: >-
   The region the data corresponds to.  This index column is needed
   when converting a data package to the IAMC format.
+alias:
+  - name: node
+    description: Calliope 0.7 and above
+  - name: loc
+    description: Calliope 0.6 and lower
