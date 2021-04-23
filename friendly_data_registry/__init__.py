@@ -56,11 +56,14 @@ def get(col: str, col_t: str) -> Dict:
         chain.from_iterable(curdir.glob(f"{col}.{fmt}") for fmt in ("json", "yaml"))
     )
     if len(schema) == 0:
-        warn(f"{col}: not in registry", RuntimeWarning)
+        warn(f"{col_t}/{col}: not in registry", RuntimeWarning)
         return {}  # no match, unregistered column
     if len(schema) > 1:  # pragma: no cover, bad registry
         raise RuntimeError(f"{schema}: multiple matches, duplicates in registry")
-    return cast(Dict, read_file(curdir / schema[0]))
+    res = cast(Dict, read_file(curdir / schema[0]))
+    for key in ("title", "description", "alias"):
+        res.pop(key, None)  # strip doc only keys
+    return res
 
 
 def getall(with_file: bool = False) -> Dict[str, List[Dict]]:
