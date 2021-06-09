@@ -1,13 +1,14 @@
 from itertools import chain
 import json
+from logging import getLogger
 from pathlib import Path
 from typing import cast, Dict, List, Union
-from warnings import warn
 
 from pkg_resources import resource_filename
 
 import yaml
 
+logger = getLogger("friendly_data.registry")
 _path_t = Union[str, Path]
 
 
@@ -56,7 +57,7 @@ def get(col: str, col_t: str) -> Dict:
         chain.from_iterable(curdir.glob(f"{col}.{fmt}") for fmt in ("json", "yaml"))
     )
     if len(schema) == 0:
-        warn(f"{col_t}/{col}: not in registry", RuntimeWarning)
+        logger.info(f"{col_t}/{col}: not in registry")
         return {}  # no match, unregistered column
     if len(schema) > 1:  # pragma: no cover, bad registry
         raise RuntimeError(f"{schema}: multiple matches, duplicates in registry")
