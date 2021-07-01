@@ -7,6 +7,8 @@ import pytest
 
 import friendly_data_registry as registry
 
+logger = registry.logger
+
 
 class schschemaema:
     _schema = {
@@ -37,12 +39,13 @@ def test_match_registry_schema(schema, _file):
         schschemaema(schema)
     except TypeMatchError as err:
         e, f = err.args[1:]
-        print(f"{_file}: type mismatch in value, expected {e}, found {f}")
-        raise
+        logger.error(f"{_file}: type mismatch in value, expected {e}, found {f}")
+        raise err from None
     except MatchError as err:
-        print(f"{_file}: {err.args[1]}: bad key in schema")
-        raise
+        logger.error(f"{_file}: {err.args[1]}: bad key in schema")
+        raise err from None
     else:
         assert (
             _file.stem == schema["name"]
         ), f"{_file}: schema names do not match: `{schema['name']}`"
+        logger.info("done")
