@@ -1,5 +1,6 @@
 {
     "name": "description",
     "type": "string",
-    "format": "default"
+    "format": "default",
+    "description": "A human readable description, typically corresponding to an index column"
 }
