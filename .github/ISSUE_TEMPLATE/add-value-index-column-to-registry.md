@@ -7,7 +7,10 @@ assignees: ''
 
 ---
 
-Please check your suggested addition is in the YAML format, and matches the following properties.  For a complete list of all supported properties, see the [frictionless documentation](https://specs.frictionlessdata.io/table-schema/).
+Please check your suggested addition is in the YAML format, and
+matches the following properties.  For a complete list of all
+supported properties, see the [frictionless
+documentation](https://specs.frictionlessdata.io/table-schema/).
 
 ```
 name: <column_name>
@@ -15,7 +18,8 @@ type: <type>
 constraints:  # optional
   ...
 description: >-
-  Free text description of your column.  This can include markdown syntax to for simple formatting.  The text here will be included in the online documentation.
+  Free text description of your column.  This can include markdown syntax to for
+  simple formatting.  The text here will be included in the online documentation.
 ```
 
 ### Location
