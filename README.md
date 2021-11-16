@@ -1,5 +1,4 @@
-Registry for Frictionless Energy data (Friendly data)
-=====================================================
+# Registry for Frictionless Energy data (Friendly data)
 
 This is the column schema registry for the Frictionless Energy data
 implementation developed by the SENTINEL collaboration.
