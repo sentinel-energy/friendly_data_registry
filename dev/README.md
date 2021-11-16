@@ -15,7 +15,7 @@ The package version needs to be a number for realiable sorting.
 
 # Releasing a new version
 
-    $ ./dev/tag_release.bash [path-version]
+    $ ./dev/tag_release.bash [patch-version]
 
 The [tag_release.bash](./tag_release.bash) script in this directory
 - generates a calendar version number,
