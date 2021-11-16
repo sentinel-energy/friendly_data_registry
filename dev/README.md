@@ -10,7 +10,7 @@ scheme.
 
 The package version is a number, possibly followed by a single digit
 patch version number: `20211120.[n]`; whereas the git tag separates
-year, month, and day with a hyphen for readability: `2021-11-20.1`.
+year, month, and day with a hyphen for readability: `2021-11-20.[n]`.
 The package version needs to be a number for realiable sorting.
 
 # Releasing a new version
