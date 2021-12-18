@@ -62,7 +62,7 @@ def get(col: str, col_t: str) -> Dict:
     if len(schema) > 1:  # pragma: no cover, bad registry
         raise RuntimeError(f"{schema}: multiple matches, duplicates in registry")
     res = cast(Dict, read_file(curdir / schema[0]))
-    for key in ("title", "description", "alias"):
+    for key in ("alias",):
         res.pop(key, None)  # strip doc only keys
     return res
 
