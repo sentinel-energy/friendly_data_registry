@@ -1,3 +1,11 @@
+"""The Friendly data schema registry
+
+This module provides getter methods to retrieve individual columns,
+:func:`get`, or the whole registry, :func:`getall`.  The function utilities and
+classes are used by the module internally.
+
+"""
+
 from itertools import chain
 import json
 from logging import getLogger
