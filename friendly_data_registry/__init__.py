@@ -4,12 +4,44 @@ from logging import getLogger
 from pathlib import Path
 from typing import cast, Dict, List, Union
 
+from glom import glom, Match, Optional as optmatch, Or
 from pkg_resources import resource_filename
 
 import yaml
 
 logger = getLogger("friendly_data.registry")
 _path_t = Union[str, Path]
+
+
+class schschemaema(Dict):
+    """Registry column schema.  Instantiate to validate.
+
+    Raises
+    ------
+    TypeMatchError
+        When the column schema has a type mismatch
+    MatchError
+        Other mismatches like, an incorrectly named key
+
+    """
+
+    _schema = {
+        "name": str,
+        "type": str,
+        optmatch("format"): str,
+        optmatch("constraints"): {
+            optmatch("enum"): list,
+            optmatch("maximum"): Or(int, float),
+            optmatch("minimum"): Or(int, float),
+            optmatch("pattern"): str,
+        },
+        optmatch("title"): str,
+        optmatch("description"): str,
+        optmatch("alias"): [{"name": str, "description": str}],
+    }
+
+    def __init__(self, schema: dict):
+        super().__init__(glom(schema, Match(self._schema)))
 
 
 def read_file(fpath: _path_t) -> Union[Dict, List]:
