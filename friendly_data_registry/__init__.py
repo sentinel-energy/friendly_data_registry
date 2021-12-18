@@ -17,7 +17,7 @@ from pkg_resources import resource_filename
 
 import yaml
 
-logger = getLogger("friendly_data.registry")
+logger = getLogger("friendly_data._registry")
 _path_t = Union[str, Path]
 
 
