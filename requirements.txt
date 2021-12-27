@@ -1,0 +1,2 @@
+glom>=20.7
+pyyaml
