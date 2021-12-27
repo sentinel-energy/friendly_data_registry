@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="friendly_data_registry",
-    version="20211116",
+    version="20211227",
     description="Schema registry for friendly_data",
     url="https://github.com/sentinel-energy/friendly_data_registry",
     packages=find_packages(exclude=["tests"]),
