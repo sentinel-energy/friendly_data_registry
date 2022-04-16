@@ -1,9 +1,12 @@
+[build-system]
+requires = ["setuptools>=42", "setuptools_scm[toml]>=3.4" ]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "friendly_data_registry"
 version = "20220103"
 description = "Registry for Frictionless Energy Data."
-maintainers = "The SENTINEL collaboration"
-repository = "https://github.com/sentinel-energy/friendly_data_registry"
+urls = {"repository" = "https://github.com/sentinel-energy/friendly_data_registry"}
 keywords = ["SENTINEL", "energy", "data", "frictionless", "registry"]
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -17,14 +20,7 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
 ]
-
-[dependencies]
-
-[dev-dependencies]
-
-[build-system]
-requires = ["setuptools>=42", "setuptools_scm[toml]>=3.4" ]
-build-backend = "setuptools.build_meta"
+dependencies = ["glom>=20.7", "pyyaml"]
 
 [tool.pytest.ini_options]
 # used for pytest>=6.0, see: https://github.com/pytest-dev/pytest/pull/7247
