@@ -1,0 +1,6 @@
+name: cost_lifetime
+type: number
+constraints:
+   minimum: 0
+description: >-
+  Generic lifetime cost of a technology.
